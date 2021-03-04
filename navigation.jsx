@@ -1,21 +1,47 @@
 import React, { Component,useState } from 'react';
+import {Picker} from '@react-native-picker/picker';
 import { AppRegistry, Button, TextInput, View, StyleSheet,ImageBackground,Image,Text} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigator from "./tabnavigator.jsx";
 const Navigation=({navigation})=>{
 // const Nav= useNavigation();
+ const [selectedValue, setSelectedValue] = useState("Menu");
+
 return(
+ 
 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
+
 <ImageBackground style={styles.backgroundImage} source={require("./b.jpg")}>
            </ImageBackground>
+
+<Picker 
+        selectedValue={selectedValue}
+        style={{ flex:0.5,height: 50, width: 110,bottom:40,left:140, }}
+        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+      >
+        <Picker.Item label="Menu" value="menu" />
+        <Picker.Item label="Coffee" value="coffee" />
+        <Picker.Item label="Hot Chocolate" value="hotchoco" />
+        <Picker.Item label="Cold Coffee" value="coldcoffee" />
+
+      </Picker>
+
+
+
+           
            <Image style={styles.img} source={require("./cafe.png")}></Image>
     <Text style={styles.des}>Hello There!</Text>
     <Button title="Click to go Back"
     style={styles.inp}
     onPress= {()=>navigation.goBack()}
     />
+    
     </View>
+    
 );
 }
 const styles = StyleSheet.create({
+ 
     backgroundImage:{
         position: 'absolute',
         top: 0,
@@ -24,9 +50,10 @@ const styles = StyleSheet.create({
         right: 0,
         opacity: 0.3,
       },
+
       img:{
-          bottom:100,
-        marginBottom: 40,
+          bottom:10,
+        marginBottom: 150,
         height:300,
         width:350,
         opacity: 0.6,
@@ -48,7 +75,7 @@ const styles = StyleSheet.create({
         textShadowColor:'brown',
         textShadowRadius:10,
         textDecorationColor:'black',
-        marginBottom:30,
+        marginBottom:90,
         bottom:30,
       }
     });
