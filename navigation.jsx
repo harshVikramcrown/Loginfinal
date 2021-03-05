@@ -1,8 +1,7 @@
 import React, { Component,useState } from 'react';
 import {Picker} from '@react-native-picker/picker';
 import { AppRegistry, Button, TextInput, View, StyleSheet,ImageBackground,Image,Text} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import TabNavigator from "./tabnavigator.jsx";
+
 const Navigation=({navigation})=>{
 // const Nav= useNavigation();
  const [selectedValue, setSelectedValue] = useState("Menu");
