@@ -7,6 +7,7 @@ const Navigation=({navigation})=>{
  const [selectedValue, setSelectedValue] = useState("Menu");
 
 return(
+
  
 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
 
@@ -15,7 +16,7 @@ return(
 
 <Picker 
         selectedValue={selectedValue}
-        style={{ flex:0.5,height: 50, width: 110,bottom:40,left:140, }}
+        style={{ flex:0.5,height: 50, width: 110,bottom:10,left:140, }}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
       >
         <Picker.Item label="Menu" value="menu" />

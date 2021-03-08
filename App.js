@@ -1,18 +1,24 @@
 import { StatusBar } from "expo-status-bar";
 import React, { Component,useState } from 'react';
 import { Alert, Button, TextInput, View, StyleSheet,ImageBackground,Image,Text} from 'react-native';
-import Login from "./login.jsx";
-import Navigation from "./navigation";
-import  Home from "./Home.jsx";
-import Settings from "./Settings.jsx";
+//import  Home from "./Home.jsx";
+//import Settings from "./Settings.jsx";
+import BottomTabNavigator from './tabnavigator';
 
 // import { createStackNavigator} from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-//const RootStack = createStackNavigator();
+//import { createStackNavigator } from '@react-navigation/stack';
 
-const Tab = createBottomTabNavigator();
+//const RootStack = createStackNavigator();
+const App = () => {
+	return (
+	  <NavigationContainer>
+		<BottomTabNavigator/>
+	  </NavigationContainer>
+	);
+  }
+  export default App
+/*const Tab = createBottomTabNavigator();
 function MyTabs() {
 	return (
 		<Tab.Navigator tabBar={props => <MyTabBar {...props} />}>
@@ -33,7 +39,7 @@ export default function App() {
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
-}
+}*/
 
  /* export default function App(){
     
