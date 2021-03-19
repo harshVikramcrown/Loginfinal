@@ -1,13 +1,26 @@
-import React, { Component,useState } from 'react';
-import { Alert, Button, TextInput, View, StyleSheet,ImageBackground,Image,Text} from 'react-native';
+import React, { Component,useState,useEffect } from 'react';
+import { Alert, Button, TextInput, View, StyleSheet,ImageBackground,Image,Text,Animated,Easing} from 'react-native';
 import Navigation from './navigation';
 import styles from './loginStyle';
 
 const Login=({navigation})=>{
     const [username, setusername] = useState(null);
  const [password, setpassword] = useState(null);
-
-  
+const[spinAnim, setSpin]=useState(new Animated.Value(0));
+const spin=spinAnim.interpolate({
+  inputRange: [0, 1],
+  outputRange: ["0deg", "360deg"],
+});
+useEffect(() => {
+  Animated.loop(
+    Animated.timing(spinAnim, {
+      toValue: 1,
+      duration: 3000,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    })
+  ).start();
+});
     return (
       
       <View style={styles.container}>
@@ -20,7 +33,11 @@ const Login=({navigation})=>{
         
            <ImageBackground style={styles.backgroundImage} source={require("./b.jpg")}>
            </ImageBackground>
-           <Image style={styles.image} source={require("./smile.png")}></Image>
+           <Animated.Image
+           source={require("./smile.png")}
+             style={styles.image}
+             style={{height:80, width:80 , transform:[{rotate:spin}] }}
+             />
           
         <TextInput
        value={username}

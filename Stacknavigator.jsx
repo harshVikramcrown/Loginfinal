@@ -5,6 +5,7 @@ const Stack = createStackNavigator();
 import Login from "./login.jsx";
 import Navigation from "./navigation";
 import Settings from './Home';
+import Profile from './Profile';
 const MainStackNavigator = () => {
     return (
  
@@ -21,4 +22,11 @@ const ContactStackNavigator = () => {
       </Stack.Navigator>
     );
   }
-  export { MainStackNavigator, ContactStackNavigator };
+  const ProfileStackNavigator=()=>{
+    return(
+    <Stack.Navigator>
+ <Stack.Screen name ="Profile" component={Profile}/>
+ </Stack.Navigator>
+ );
+  }
+  export { MainStackNavigator, ContactStackNavigator,ProfileStackNavigator};

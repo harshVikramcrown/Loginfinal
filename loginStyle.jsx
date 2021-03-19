@@ -20,8 +20,6 @@ const styles = StyleSheet.create({
     },
     image: {
       marginBottom: 40,
-     height:80,
-     width:80,
     },
     description:{
       fontSize:60,
