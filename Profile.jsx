@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import {Modal,Text,TouchableOpacity,View,Image,} from "react-native";
+import {Modal,Text,TouchableOpacity,View,Image,StyleSheet,Platform,ImageBackground} from "react-native";
 import { Camera } from "expo-camera";
+import * as ImagePicker from 'expo-image-picker';
+import Constants from 'expo-constants';
 import { Button } from "react-native-paper";
 const CameraModule = (props) => {
-   const [cameraRef, setCameraRef] = useState(null);
-   const [type, setType] = useState(Camera.Constants.Type.back);
-   const [image,setImage]= useState(null)
-return (
+  const [cameraRef, setCameraRef] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.back);
+  return (
     <Modal
       animationType="slide"
       transparent={true}
@@ -15,7 +16,7 @@ return (
         props.setModalVisible();
       }}
     >
-      <Camera
+      <Camera    //settings camera flaslight and full screen
         style={{ flex: 1 }}
         ratio="16:9"
         flashMode={Camera.Constants.FlashMode.on}
@@ -31,7 +32,7 @@ return (
             justifyContent: "flex-end",
           }}
         >
-          <View
+          <View                    //For camera settings
             style={{
               backgroundColor: "black",
               flexDirection: "row",
@@ -39,7 +40,7 @@ return (
               justifyContent: "space-between",
             }}
           >
-            <Button
+            <Button   
               icon="close"
               style={{ marginLeft: 12 }}
               mode="outlined"
@@ -59,20 +60,7 @@ return (
                 }
               }}
             >
-              <View
-                style={{
-                  borderWidth: 2,
-                  borderRadius: 50,
-                  borderColor: "white",
-                  height: 50,
-                  width: 50,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginBottom: 16,
-                  marginTop: 16,
-                }}
-              >
+              <View >
                 <View
                   style={{
                     borderWidth: 2,
@@ -85,12 +73,6 @@ return (
                 ></View>
               </View>
             </TouchableOpacity>
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-    </View>
-  );
-
        <Button
               icon="axis-z-rotate-clockwise"
               style={{ marginRight: 12 }}
@@ -112,16 +94,13 @@ return (
     </Modal>
   );
 };
+
 export default function ImagePickerExample() {
   const [image, setImage] = useState(null);
-  const [camera, setShowCamera] = useState(false);
   const [hasPermission, setHasPermission] = useState(null);
-useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === "granted");
-    })();
-  }, []);
+  const [camera, setShowCamera] = useState(false);
+  
+//galary
   useEffect(() => {
     (async () => {
       if (Platform.OS !== 'web') {
@@ -132,14 +111,40 @@ useEffect(() => {
       }
     })();
   }, []);
-if (hasPermission === null) {
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
+  //Camera
+  useEffect(()=>{
+    (async ()=>{
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
+  if (hasPermission === null) {
     return <View />;
   }
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
-return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+
+  return (
+    
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+       <ImageBackground style={{position: 'absolute',top: 0,left: 0,bottom: 0,right: 0,opacity: 0.3,}} source={require("./b.jpg")}>
+           </ImageBackground>
       <View
         style={{
           backgroundColor: "#eeee",
@@ -154,6 +159,11 @@ return (
           style={{ width: 120, height: 120, borderRadius: 100 }}
         />
       </View>
+
+      <Button 
+        icon="camera"
+        mode="contained"
+        onPress={pickImage}>Gallary</Button>
       <Button
         style={{ width: "30%", marginTop: 16 }}
         icon="camera"
@@ -164,7 +174,8 @@ return (
       >
         Camera
       </Button>
-    {camera && (
+
+      {camera && (
         <CameraModule
           showModal={camera}
           setModalVisible={() => setShowCamera(false)}
@@ -172,5 +183,8 @@ return (
         />
       )}
     </View>
+    
   );
-}
+          }
+        
+       
