@@ -5,6 +5,7 @@ import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import { Button } from "react-native-paper";
 const CameraModule = (props) => {
+ 
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   return (
@@ -143,7 +144,7 @@ export default function ImagePickerExample() {
   return (
     
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-       <ImageBackground style={{position: 'absolute',top: 0,left: 0,bottom: 0,right: 0,opacity: 0.3,}} source={require("./b.jpg")}>
+       <ImageBackground style={{position: 'absolute',top: 0,left: 0,bottom: 0,right: 0,opacity: 0.8,}} source={require("./p.jpg")}>
            </ImageBackground>
       <View
         style={{
