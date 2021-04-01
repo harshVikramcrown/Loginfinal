@@ -27,7 +27,7 @@ useEffect(() => {
   Animated.loop(
     Animated.timing(spinAnim, {
       toValue: 1,
-      duration: 3000,
+      duration: 100,
       easing: Easing.linear,
       useNativeDriver: true,
     })

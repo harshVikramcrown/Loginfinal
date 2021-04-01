@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {Modal,Text,TouchableOpacity,View,Image,StyleSheet,Platform,ImageBackground} from "react-native";
 import { Camera } from "expo-camera";
 import * as ImagePicker from 'expo-image-picker';
-import Constants from 'expo-constants';
 import { Button } from "react-native-paper";
 const CameraModule = (props) => {
  
@@ -41,7 +40,7 @@ const CameraModule = (props) => {
               justifyContent: "space-between",
             }}
           >
-            <Button   
+            <Button   //camera button 
               icon="close"
               style={{ marginLeft: 12 }}
               mode="outlined"

@@ -6,6 +6,7 @@ import Login from "./login.jsx";
 import Navigation from "./navigation";
 import Settings from './Home';
 import Profile from './Profile';
+import Screen from './Screen';
 const MainStackNavigator = () => {
     return (
  
@@ -29,5 +30,11 @@ const ContactStackNavigator = () => {
  </Stack.Navigator>
  );
   }
- 
-  export { MainStackNavigator, ContactStackNavigator,ProfileStackNavigator};
+  const ScreenStackNavigator=()=>{
+    return(
+    <Stack.Navigator>
+ <Stack.Screen name ="Screen" component={Screen}/>
+ </Stack.Navigator>
+ );
+  }
+  export { MainStackNavigator, ContactStackNavigator,ProfileStackNavigator,ScreenStackNavigator};
