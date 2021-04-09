@@ -35,7 +35,7 @@ return(
         <Text style={styles.Price}>{Data.Price}</Text>
       </View>
       <TouchableOpacity style={styles.btn}>
-        <Text style={styles.btnContainer}>FREE SHIP</Text>
+        <Text style={styles.btnContainer}>{Data.Button1}</Text>
       </TouchableOpacity>
     </View>
 
@@ -48,7 +48,7 @@ return(
     <View style={styles.cont}>
     <Icon name="heart" size={42} color="#fd2d59" />
           <TouchableOpacity style={styles.cartBtn}>
-            <Text style={styles.cartText}>Add to Cart</Text>
+            <Text style={styles.cartText}>{Data.Cart}</Text>
           </TouchableOpacity>
     </View>
          
@@ -59,7 +59,7 @@ return(
     
     <View>
     <TouchableOpacity style={styles.checkOut}>               
-            <Text style={styles.chkoutleft}>$11.2</Text>
+            <Text style={styles.chkoutleft}>{Data.Price3}</Text>
             <Text style={styles.chkoutText}>{Data.Out}</Text>
             <AntDesign style={{top:6,left:15}} name="arrowright" size={24}  color="white" />
           </TouchableOpacity>

@@ -21,10 +21,7 @@ const Description=()=>{
           numberOfLines={2}
           renderTruncatedFooter={this._renderTruncatedFooter}
         >
-         Evereybody enjoys indulging in juicy red cherries during
-          the summer season.
-          This vibrant red fruits is a great blend of sweet
-           flavours with a tingle of sourness and add the ..
+         {Data.Desc}
           </ReadMore>
       </View>
     </View>

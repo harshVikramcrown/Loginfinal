@@ -24,7 +24,7 @@ const Footerr=()=>{
          </View>
          
           <View style={{flex:0.5,paddingLeft:10,fontWeight:"bold"}}>
-<Text>French Cherry</Text>
+<Text>{Data.Name1}</Text>
           </View>
         </View>
         <View style={{height:100,Weidht:100,marginLeft:-5,borderWidth:0.3,borderColor:'white',left:10}}>
@@ -37,7 +37,7 @@ const Footerr=()=>{
          </View>
          
           <View style={{flex:0.5,paddingLeft:10,fontWeight:"bold"}}>
-<Text>Japan Cherry</Text>
+<Text>{Data.Name2}</Text>
           </View>
         </View>
       </ScrollView>
