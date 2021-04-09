@@ -1,83 +1,72 @@
 import React, { useContext,useState } from 'react';
 import {Picker} from '@react-native-picker/picker';
-import { AppRegistry, Button, TextInput, View, StyleSheet,ImageBackground,Image,Text} from 'react-native';
+import { StatusBar,AppRegistry, Button, TextInput, View, StyleSheet,ImageBackground,Image,Text,TouchableOpacity,ImageData,Animated} from 'react-native';
+import { Ionicons as Icon } from "@expo/vector-icons";
+import { AntDesign } from '@expo/vector-icons'; 
+import { ScrollView } from 'react-native-gesture-handler';
+import Data from "./Components/FoodData";
+import styles from "./Components/FoodStyles";
+import Head from "./Components/Icons.jsx";
+import Description from './Components/Description.jsx';
+import Footerr from './Components/Footerr';
 
 const Navigation=({navigation})=>{
 // const Nav= useNavigation();
- const [selectedValue, setSelectedValue] = useState("Menu");
-
+ //const [selectedValue, setSelectedValue] = useState("Menu");
 return(
 
- 
-<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
-
-<ImageBackground style={styles.backgroundImage} source={require("./b.jpg")}>
-           </ImageBackground>
-
-<Picker 
-        selectedValue={selectedValue}
-        style={{ flex:0.5,height: 50, width: 110,bottom:10,left:140, }}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-      >
-        <Picker.Item label="Menu" value="menu" />
-        <Picker.Item label="Coffee" value="coffee" />
-        <Picker.Item label="Hot Chocolate" value="hotchoco" />
-        <Picker.Item label="Cold Coffee" value="coldcoffee" />
-
-      </Picker>
-
-
-
-           
-           <Image style={styles.img} source={require("./cafe.png")}></Image>
-    <Text style={styles.des}>Hello There!</Text>
-    <Button title="Click to go Back"
-    style={styles.inp}
-    onPress= {()=>navigation.goBack()}
-    />
-    
+  <View style={{flex:1}}>
+  <View style={{flex:0.5,justifyContent: "center",alignContent: "center",}}>
+   <View style={styles.MainContainer}>
+  <Image source={Data.Image1} style={{resizeMode:'center',bottom:40,}}/>
+      </View>
+      <View style={styles.dotView}>
+          <Animated.View style={styles.line}/>
+          <Animated.View style={styles.dot} />
+          <Animated.View style={styles.dot} />
+          <Animated.View style={styles.dot} />
+        </View>
+      </View>
+  <View style={styles.Head}>
+    <Text style={styles.Title}>{Data.Title}</Text>
+    <View style={{lexDirection: "row",}}>
+      <View style={{ flexDirection: "row" }}>
+        <Text style={styles.MainPrice}>{Data.MainPrice}</Text>
+        <Text style={styles.Price}>{Data.Price}</Text>
+      </View>
+      <TouchableOpacity style={styles.btn}>
+        <Text style={styles.btnContainer}>FREE SHIP</Text>
+      </TouchableOpacity>
     </View>
-    
-);
-}
-const styles = StyleSheet.create({
- 
-    backgroundImage:{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        opacity: 0.3,
-      },
 
-      img:{
-          bottom:10,
-        marginBottom: 150,
-        height:300,
-        width:350,
-        opacity: 0.6,
-      },
-      inp:{
-        position:"absolute",
-        width: 200,
-        height: 44,
-        padding: 10,
-        borderWidth: 1,
-        borderColor: 'black',
-        marginBottom: 10,
-      },
-      des:{
-        fontSize:60,
-        color:'white',
-        fontStyle:'italic',
-        fontWeight:'bold',
-        textShadowColor:'brown',
-        textShadowRadius:10,
-        textDecorationColor:'black',
-        marginBottom:90,
-        bottom:30,
-      }
-    });
+    <Head/>
+   
+    <Description/>
+
+    
+    
+    <View style={styles.cont}>
+    <Icon name="heart" size={42} color="#fd2d59" />
+          <TouchableOpacity style={styles.cartBtn}>
+            <Text style={styles.cartText}>Add to Cart</Text>
+          </TouchableOpacity>
+    </View>
+         
+         
+         <Footerr/>
+    
+    
+    
+    <View>
+    <TouchableOpacity style={styles.checkOut}>               
+            <Text style={styles.chkoutleft}>$11.2</Text>
+            <Text style={styles.chkoutText}>{Data.Out}</Text>
+            <AntDesign style={{top:6,left:15}} name="arrowright" size={24}  color="white" />
+          </TouchableOpacity>
+    </View>
+  </View>
+</View>
+);
+};
     
 export default Navigation;

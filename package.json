@@ -27,6 +27,8 @@
     "react-native-image-crop-picker": "^0.36.0",
     "react-native-image-picker": "^3.3.2",
     "react-native-paper": "^4.7.2",
+    "react-native-read-more-text": "^1.1.2",
+    "react-native-read-more-text-hooks": "^1.0.5",
     "react-native-reanimated": "^2.0.1",
     "react-native-redash": "^16.0.8",
     "react-native-safe-area-context": "3.1.9",
